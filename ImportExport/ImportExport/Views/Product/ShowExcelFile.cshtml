@@ -1,0 +1,129 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Excel File</title>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/")jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#checkBoxAll').click(function () {
+                if ($(this).is(":checked"))
+                    $('.chkCheckBoxId').prop('checked', true);
+                else
+                    $('.chkCheckBoxId').prop('checked', false);
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    @using (Html.BeginForm("SearchByTurnover", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="text" name="turnover">
+        <select name="filter">
+            <option value="greaterthan">Greater than</option>
+            <option value="lessthan">Less than</option>
+        </select>
+        <input type="submit" value="Search" />
+    }
+
+    @using (Html.BeginForm("DeleteMultiple", "Product", FormMethod.Post))
+    {
+        <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+        <h3>List Products</h3>
+
+
+
+        <table cellpadding="2" cellspacing="2" border="1">
+            <tr>
+                <th><input type="checkbox" id="checkBoxAll"></th>
+
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Title</th>
+                <th>Address1</th>
+                <th>Address2</th>
+                <th>City</th>
+                <th>C/O Address</th>
+                <th>Zip Code</th>
+                <th>Company Email</th>
+                <th>Company Name</th>
+                <th>Company Legal Name</th>
+                <th>Department</th>
+                <th>Company Phone</th>
+                <th>Employees Min</th>
+                <th>Employees Max</th>
+                <th>Company Organisation Number</th>
+                <th>Vat Number</th>
+                <th>Turn over</th>
+                <th>County</th>
+                <th>Minicipal</th>
+                <th>Sni Code</th>
+                <th>Branch</th>
+                <th>Company Type</th>
+                <th>Sector</th>
+                <th>Master Sni Code</th>
+                <th>Master Branch</th>
+
+
+                <th>File</th>
+            </tr>
+            @foreach (var p in ViewBag.ListProducts)
+            {
+                <tr>
+                    <td><input type="checkbox" class="chkCheckBoxId" value="@p.Id" name="productId" /></td>
+                    <td>@p.Id</td>
+                    <td>@p.FirstName</td>
+                    <td>@p.LastName</td>
+                    <td>@p.Email</td>
+                    <td>@p.Title</td>
+                    <td>@p.Address1</td>
+                    <td>@p.Address2</td>
+                    <td>@p.City</td>
+                    <td>@p.COAddress</td>
+                    <td>@p.Zip</td>
+                    <td>@p.CompanyEmail</td>
+                    <td>@p.CompanyName</td>
+                    <td>@p.CompanyLegalName</td>
+                    <td>@p.Department</td>
+                    <td>@p.CompanyPhone</td>
+                    <td>@p.EmployeesMin</td>
+                    <td>@p.EmployeesMax</td>
+                    <td>@p.CompanyOrganisationNumber</td>
+                    <td>@p.VatNumber</td>
+                    <td>@p.TurnOver</td>
+                    <td>@p.County</td>
+                    <td>@p.Minicipal</td>
+                    <td>@p.SniCode</td>
+                    <td>@p.Branch</td>
+                    <td>@p.CompanyType</td>
+                    <td>@p.Sector</td>
+                    <td>@p.MasterSniCode</td>
+                    <td>@p.MasterBranch</td>
+                </tr>
+            }
+        </table>
+    }
+    <br><br>
+
+    @using (Html.BeginForm("ExportExcel", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <span> Name </span> <input type="text" name="filename">
+        <span> </span><input type="submit" value="Export" />
+    }
+
+
+    @Html.ActionLink("Export Excel", "ExportExcel", "Product", new { FileName = @ViewBag.FileName }, new { @class = "btn btn-danger" })
+    <a href="@Url.Action("ExportExcel", "Product")">Excel Excel File</a>
+</body>
+</html>

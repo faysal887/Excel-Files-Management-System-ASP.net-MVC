@@ -1,0 +1,57 @@
+﻿
+
+@model IEnumerable<ImportExport.Models.Product>
+
+
+@Html.ActionLink("Delete All Excel file", "DeleteExcels")
+
+@using (Html.BeginForm("Import", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Raw(ViewBag.Error)
+    <span> 1- Excel File </span> <input type="file" name="excelfile" />
+        <span> 2- </span> <input type="text" name="filename">
+        <span>3- </span><input type="submit" value="import" />
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.FileName)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.TimeStamp)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.NoOfPosts)</div>
+            </td>
+            <td>
+                @Html.ActionLink("View", "ShowExcelFile", "Product", new { FileName = item.FileName }, new { @class = "btn btn-danger" }) |
+                @Html.ActionLink("Delete", "DeleteExcelFile", "Product", new { FileName = item.FileName }, new { @class = "btn btn-danger" })
+            </td>
+
+        </tr>
+
+    }
+
+</table>
+
+
+
+
+
+
+
+
+

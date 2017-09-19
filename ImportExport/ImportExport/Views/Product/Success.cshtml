@@ -1,0 +1,213 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/w3c.css">
+    <title>Success</title>
+</head>
+<body>
+    <div class="w3-container">
+        <center>
+            <h1>Excel File Data</h1>
+            @Html.ActionLink("Add to DB", "addExcelFileToDB", "Product", new { @class = "btn btn-danger" })
+        </center>
+        <br><br>
+        <table cellpadding="2" cellspacing="2" border="1" class="w3-table-all">
+            <thead>
+                <tr class="w3-light-grey">
+                    <th>S.No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Title</th>
+                    <th>Address1</th>
+                    <th>Address2</th>
+                    <th>City</th>
+                    <th>C/O Address</th>
+                    <th>Zip Code</th>
+                    <th>Company Email</th>
+                    <th>Company Name</th>
+                    <th>Company Legal Name</th>
+                    <th>Department</th>
+                    <th>Company Phone</th>
+                    <th>Employees Min</th>
+                    <th>Employees Max</th>
+                    <th>Company Organisation Number</th>
+                    <th>Vat Number</th>
+                    <th>Turn over</th>
+                    <th>County</th>
+                    <th>Minicipal</th>
+                    <th>Sni Code</th>
+                    <th>Branch</th>
+                    <th>Company Type</th>
+                    <th>Sector</th>
+                    <th>Master Sni Code</th>
+                    <th>Master Branch</th>
+                </tr>
+            </thead>
+            @foreach (var p in ViewBag.ListProducts)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.FirstName</td>
+                    <td>@p.LastName</td>
+                    <td>@p.Email</td>
+                    <td>@p.Title</td>
+                    <td>@p.Address1</td>
+                    <td>@p.Address2</td>
+                    <td>@p.City</td>
+                    <td>@p.COAddress</td>
+                    <td>@p.Zip</td>
+                    <td>@p.CompanyEmail</td>
+                    <td>@p.CompanyName</td>
+                    <td>@p.CompanyLegalName</td>
+                    <td>@p.Department</td>
+                    <td>@p.CompanyPhone</td>
+                    <td>@p.EmployeesMin</td>
+                    <td>@p.EmployeesMax</td>
+                    <td>@p.CompanyOrganisationNumber</td>
+                    <td>@p.VatNumber</td>
+                    <td>@p.TurnOver</td>
+                    <td>@p.County</td>
+                    <td>@p.Minicipal</td>
+                    <td>@p.SniCode</td>
+                    <td>@p.Branch</td>
+                    <td>@p.CompanyType</td>
+                    <td>@p.Sector</td>
+                    <td>@p.MasterSniCode</td>
+                    <td>@p.MasterBranch</td>
+                </tr>
+            }
+        </table>
+
+        <div>
+
+            <center>
+                <h1>Columns Matching</h1>
+                <h3>Database Columns VS Excel Columns</h3>
+
+                <table cellpadding="2" cellspacing="2" border="1">
+                    <tr>
+                        <th>Database Columns</th>
+                        <th>Excel Columns</th>
+                    </tr>
+                    <tr>
+                        <td>FirstName</td>
+                        <td>@ViewBag.ColumnNames[1]</td>
+                    </tr>
+                    <tr>
+                        <td>Lastname</td>
+                        <td>@ViewBag.ColumnNames[2]</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>@ViewBag.ColumnNames[3]</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                        <td>@ViewBag.ColumnNames[4]</td>
+                    </tr>
+                    <tr>
+                        <td>Address1</td>
+                        <td>@ViewBag.ColumnNames[5]</td>
+                    </tr>
+                    <tr>
+                        <td>Address2</td>
+                        <td>@ViewBag.ColumnNames[6]</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>@ViewBag.ColumnNames[7]</td>
+                    </tr>
+                    <tr>
+                        <td>C/O Address</td>
+                        <td>@ViewBag.ColumnNames[8]</td>
+                    </tr>
+                    <tr>
+                        <td>Zip</td>
+                        <td>@ViewBag.ColumnNames[9]</td>
+                    </tr>
+                    <tr>
+                        <td>Company Email</td>
+                        <td>@ViewBag.ColumnNames[10]</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>@ViewBag.ColumnNames[11]</td>
+                    </tr>
+                    <tr>
+                        <td>Company Legal Name</td>
+                        <td>@ViewBag.ColumnNames[12]</td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td>@ViewBag.ColumnNames[13]</td>
+                    </tr>
+                    <tr>
+                        <td>Company Phone</td>
+                        <td>@ViewBag.ColumnNames[14]</td>
+                    </tr>
+                    <tr>
+                        <td>Employees Min</td>
+                        <td>@ViewBag.ColumnNames[15]</td>
+                    </tr>
+                    <tr>
+                        <td>Employees Max</td>
+                        <td>@ViewBag.ColumnNames[16]</td>
+                    </tr>
+                    <tr>
+                        <td>Company Organisation Number</td>
+                        <td>@ViewBag.ColumnNames[17]</td>
+                    </tr>
+                    <tr>
+                        <td>Vat Number</td>
+                        <td>@ViewBag.ColumnNames[18]</td>
+                    </tr>
+                    <tr>
+                        <td>Turn Over</td>
+                        <td>@ViewBag.ColumnNames[19]</td>
+                    </tr>
+                    <tr>
+                        <td>County</td>
+                        <td>@ViewBag.ColumnNames[20]</td>
+                    </tr>
+                    <tr>
+                        <td>Minicipal</td>
+                        <td>@ViewBag.ColumnNames[21]</td>
+                    </tr>
+                    <tr>
+                        <td>Sni Code</td>
+                        <td>@ViewBag.ColumnNames[22]</td>
+                    </tr>
+                    <tr>
+                        <td>Branch</td>
+                        <td>@ViewBag.ColumnNames[23]</td>
+                    </tr>
+                    <tr>
+                        <td>Company Type</td>
+                        <td>@ViewBag.ColumnNames[24]</td>
+                    </tr>
+                    <tr>
+                        <td>Sector</td>
+                        <td>@ViewBag.ColumnNames[25]</td>
+                    </tr>
+                    <tr>
+                        <td>Master Sni Code</td>
+                        <td>@ViewBag.ColumnNames[26]</td>
+                    </tr>
+                    <tr>
+                        <td>Master Branch</td>
+                        <td>@ViewBag.ColumnNames[27]</td>
+                    </tr>
+
+                </table>
+            </center>
+        </div>
+
+    </div>
+</body>
+</html>
