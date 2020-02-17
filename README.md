@@ -1,5 +1,5 @@
 # Excel Files Management System
-A dashboard for managing large number of excel files developed in ASP.net-MVC framework.
+A dashboard for managing large number of excel files and perform CRUD operations.
 
 # Usage
 - Setup ASP.net in your system
